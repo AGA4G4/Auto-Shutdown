@@ -7,14 +7,14 @@ int main() {
 float hour , minute , second;
 cout << "Hello & welcome to Auto-Shutdown program \n";
 point:
-cout << "Choose an option: 1) Shutdown 2) Log Out 3) Restart 4) Hibernate 5) Hybrid 6) Abort upcoming schedule\n";
+cout << "Choose an option: 1) Shutdown 2) Restart 3) Hybrid 4) Abort upcoming schedule\n";
 int mode;
 cin >> mode;
-if (mode != 1 && mode != 2 && mode != 3 && mode != 4 && mode != 5 && mode != 6)
+if (mode != 1 && mode != 2 && mode != 3 && mode != 4)
     {
     cout << "Invalid input.\n";
     goto point;
-    }else if (mode == 6)
+    }else if (mode == 4)
         {
             {
             ostringstream command;
@@ -43,44 +43,27 @@ switch (mode) {
     case 1:
         {
         ostringstream command;
-        command << "shutdown /s /t > NUL 2> NUL" << shutdowntime;
+        command << "shutdown /s /t " << shutdowntime;
         cout << "Your computer will shutdown in " << hour << " h and " << minute << " min and " << second << " seconds\n";
         system(command.str().c_str());
         goto point;
         }
     case 2:
-    {
+  {
         ostringstream command;
-        command << "shutdown /l /t > NUL 2> NUL" << shutdowntime;
-        cout << "Your computer will log out in " << hour << " h and " << minute << " min and " << second << " seconds\n";
-        system(command.str().c_str());
-        goto point;
-    }
-    case 3:
-        {
-        ostringstream command;
-        command << "shutdown /r /t > NUL 2> NUL " << shutdowntime;
+        command << "shutdown /r /t " << shutdowntime;
         cout << "Your computer will get restarted in " << hour << " h and " << minute << " min and " << second << " seconds\n";
         system(command.str().c_str());
         goto point;
         }
-    case 4:
-        {
+    case 3:
+         {
         ostringstream command;
-        command << "shutdown /h /t > NUL 2> NUL" << shutdowntime;
-        cout << "Your computer will get hibernated in " << hour << " h and " << minute << " min and " << second << " seconds\n";
-        system(command.str().c_str());
-        goto point;
-        }
-    case 5:
-        {
-        ostringstream command;
-        command << "shutdown /s /hybrid /t > NUL 2> NUL" << shutdowntime;
+        command << "shutdown /s /hybrid /t " << shutdowntime;
         cout << "Your computer will get hybridiated in " << hour << " h and " << minute << " min and " << second << " seconds\n";
         system(command.str().c_str());
         goto point;
         }
-
 }
     }
 }
